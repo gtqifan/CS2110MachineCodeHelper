@@ -78,7 +78,7 @@ public class lc3converter {
     public static String and(String in) {
         int DR = binaryStringToInt(in.substring(4,7));
         int SR1 = binaryStringToInt(in.substring(7,10));
-        String result = "AND R" + DR + ",R" + SR1 + ", " + binaryStringToInts(in.substring(11,16));
+        String result = "AND R" + DR + ",R" + SR1 + "," + binaryStringToInts(in.substring(11,16));
         if (Integer.parseInt(in.substring(10, 11)) == 0) {
             result +=  "R" + binaryStringToInt(in.substring(11,16));
         } else {
@@ -112,7 +112,7 @@ public class lc3converter {
     public static String ld(String in) {
         int SR = binaryStringToInt(in.substring(4,7));
         String offset = binaryStringToInts(in.substring(7,16));
-        String result = "R" + SR + ", " + offset;
+        String result = "R" + SR + "," + offset;
         return result;
     }
 
@@ -121,14 +121,14 @@ public class lc3converter {
         int SR = binaryStringToInt(in.substring(4,7));
         int BaseR = binaryStringToInt(in.substring(7,10));
         String offset = binaryStringToInts(in.substring(10,16));
-        String result = "R" + SR + ", R" + BaseR + ", " + offset;
+        String result = "R" + SR + ",R" + BaseR + "," + offset;
         return result;
     }
 
     public static String not(String in) {
         int SR = binaryStringToInt(in.substring(4,7));
         int BaseR = binaryStringToInt(in.substring(7,10));
-        String result = "NOT R" + SR + ", R" + BaseR;
+        String result = "NOT R" + SR + ",R" + BaseR;
         return result;
     }
 
@@ -170,7 +170,7 @@ public class lc3converter {
                     System.out.println(and(input));
                 } else if (input.substring(0, 4).equals("0000")) {
                     //BR
-                    System.out.println("BR" + brhelp(input.substring(4, 7)) + " ,off " + binaryStringToInts(input.substring(7, 16)));
+                    System.out.println("BR" + brhelp(input.substring(4, 7)) + ",<OFF BY> " + binaryStringToInts(input.substring(7, 16)));
                 } else if (input.substring(0, 4).equals("0100")) {
                     //JSR JSRR
                     System.out.println(jsr(input));//and jsrr

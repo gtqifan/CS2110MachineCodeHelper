@@ -148,10 +148,15 @@ public class lc3converter {
 
 
     public static void main(String[] args) {
+        System.out.println("To terminate, type \"quit\"");
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Please enter binary code:");
             String input = scanner.nextLine();
+            if (input.equals("quit")) {
+                System.out.println("Bye");
+                System.exit(0);
+            }
             System.out.println("Output:");
             try {
                 if (input.length() != 16) {

@@ -1,3 +1,6 @@
+//Credit: Chuyi Chen
+//Modified by: Qifan Yang
+
 import java.util.Scanner;
 
 public class lc3converter {
@@ -150,51 +153,61 @@ public class lc3converter {
             System.out.println("Please enter the binary code:");
             String input = scanner.nextLine();
             System.out.println("Output:");
-
-            if (input.substring(0, 4).equals("0001")) {
-                //ADD
-                System.out.println(add(input));
-            } else if (input.substring(0, 4).equals("0101")) {
-                //AND
-                System.out.println(and(input));
-            } else if (input.substring(0, 4).equals("0000")) {
-                //BR
-                System.out.println("BR" + brhelp(input.substring(4, 7)) + " ,off " + binaryStringToInts(input.substring(7, 16)));
-            } else if (input.substring(0, 4).equals("0100")) {
-                //JSR JSRR
-                System.out.println(jsr(input));//and jsrr
-            } else if (input.substring(0, 4).equals("0010")) {
-                //LD
-                System.out.println("LD" + ld(input));
-            } else if (input.substring(0, 4).equals("1010")) {
-                //LDI
-                System.out.println("LDI " + ld(input));
-            } else if (input.substring(0, 4).equals("0110")) {
-                //LDR
-                System.out.println("LDR " + ldr(input));
-            } else if (input.substring(0, 4).equals("1110")) {
-                //LEA
-                System.out.println("LEA " + ld(input));
-            } else if (input.substring(0, 4).equals("1001")) {
-                //NOT
-                System.out.println(not(input));
-            } else if (input.substring(0, 4).equals("0011")) {
-                //ST
-                System.out.println("ST " + ld(input));
-            } else if (input.substring(0, 4).equals("1011")) {
-                //STI
-                System.out.println("STI " + ld(input));
-            } else if (input.substring(0, 4).equals("0111")) {
-                //STR
-                System.out.println("STR " + ldr(input));
-            } else if (input.substring(0, 4).equals("1100")) {
-                //JMP
-                System.out.println(jmp(input));
-            } else if (input.substring(0, 4).equals("1111")) {
-                //TRAP
-                System.out.println("TRAP " + binaryStringToInts(input.substring(8,16)));
+            try {
+                if (input.length() != 16) {
+                    throw new IllegalArgumentException();
+                }
+                for (int i = 0; i < input.length(); i++) {
+                    if (input.charAt(i) != '0' && input.charAt(i) != '1') {
+                        throw new IllegalArgumentException();
+                    }
+                }
+                if (input.substring(0, 4).equals("0001")) {
+                    //ADD
+                    System.out.println(add(input));
+                } else if (input.substring(0, 4).equals("0101")) {
+                    //AND
+                    System.out.println(and(input));
+                } else if (input.substring(0, 4).equals("0000")) {
+                    //BR
+                    System.out.println("BR" + brhelp(input.substring(4, 7)) + " ,off " + binaryStringToInts(input.substring(7, 16)));
+                } else if (input.substring(0, 4).equals("0100")) {
+                    //JSR JSRR
+                    System.out.println(jsr(input));//and jsrr
+                } else if (input.substring(0, 4).equals("0010")) {
+                    //LD
+                    System.out.println("LD" + ld(input));
+                } else if (input.substring(0, 4).equals("1010")) {
+                    //LDI
+                    System.out.println("LDI " + ld(input));
+                } else if (input.substring(0, 4).equals("0110")) {
+                    //LDR
+                    System.out.println("LDR " + ldr(input));
+                } else if (input.substring(0, 4).equals("1110")) {
+                    //LEA
+                    System.out.println("LEA " + ld(input));
+                } else if (input.substring(0, 4).equals("1001")) {
+                    //NOT
+                    System.out.println(not(input));
+                } else if (input.substring(0, 4).equals("0011")) {
+                    //ST
+                    System.out.println("ST " + ld(input));
+                } else if (input.substring(0, 4).equals("1011")) {
+                    //STI
+                    System.out.println("STI " + ld(input));
+                } else if (input.substring(0, 4).equals("0111")) {
+                    //STR
+                    System.out.println("STR " + ldr(input));
+                } else if (input.substring(0, 4).equals("1100")) {
+                    //JMP
+                    System.out.println(jmp(input));
+                } else if (input.substring(0, 4).equals("1111")) {
+                    //TRAP
+                    System.out.println("TRAP " + binaryStringToInts(input.substring(8,16)));
+                }
+            } catch (Exception e) {
+                System.out.println("Invalid Input");
             }
-
             System.out.println("----------------------------------");
         }
     }

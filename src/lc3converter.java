@@ -150,7 +150,7 @@ public class lc3converter {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.println("Please enter the binary code:");
+            System.out.println("Please enter binary code:");
             String input = scanner.nextLine();
             System.out.println("Output:");
             try {
